@@ -4,27 +4,18 @@ using Callcenter.Infra.Database.DataContexts;
 using Callcenter.Infra.Database.Repositories;
 using SimpleInjector;
 using System;
-using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Callcenter.Presentation
+namespace Callcenter.Infra.CrossCutting.IoC
 {
-    static class Program
+    public class SimpleInjectorBootstrap
     {
         private static Container _container;
 
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            BootstrapIoC();
-            Application.Run(_container.GetInstance<FormMain>());
-        }
-
-        private static void BootstrapIoC()
+        public static void Bootstrap()
         {
             _container = new Container();
 
@@ -33,8 +24,6 @@ namespace Callcenter.Presentation
             _container.Register<IUserRepository, UserRepository>(Lifestyle.Singleton);
 
             _container.Register<UserHandler>(Lifestyle.Singleton);
-
-            _container.Register<FormMain>(Lifestyle.Singleton);
 
             _container.Verify();
         }
