@@ -53,6 +53,15 @@ namespace Callcenter.Infra.Database.Repositories
                 .FirstOrDefault();
         }
 
+        public GetUserQueryResult GetByLogin(string login)
+        {
+            return
+               _context
+               .Connection
+               .Query<GetUserQueryResult>("SELECT [Id], CONCAT([FirstName], ' ', [LastName]) AS [Name], [Document], [Email], [Picture] FROM [User] WHERE [Email]=@email", new { email = login })
+               .FirstOrDefault();
+        }
+
         public IEnumerable<ListUserQueryResult> ListAll()
         {
             return

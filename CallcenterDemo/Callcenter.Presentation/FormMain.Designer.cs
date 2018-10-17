@@ -30,35 +30,39 @@
         {
             this.tabControlDemos = new System.Windows.Forms.TabControl();
             this.tabPageLoginFace = new System.Windows.Forms.TabPage();
-            this.tabPageFaceDetect = new System.Windows.Forms.TabPage();
-            this.tabPageMood = new System.Windows.Forms.TabPage();
-            this.textBoxUsername = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.pictureBoxDatabaseSec = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.buttonStopSec = new System.Windows.Forms.Button();
+            this.buttonStartSec = new System.Windows.Forms.Button();
+            this.lblResultSec = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBoxWebCamSec = new System.Windows.Forms.PictureBox();
-            this.lblResultSec = new System.Windows.Forms.Label();
-            this.labelResultFace = new System.Windows.Forms.Label();
-            this.pictureBoxFace = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.labelResultMood = new System.Windows.Forms.Label();
-            this.buttonStartSec = new System.Windows.Forms.Button();
-            this.buttonStopSec = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBoxDatabaseSec = new System.Windows.Forms.PictureBox();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxUsername = new System.Windows.Forms.TextBox();
+            this.tabPageFaceDetect = new System.Windows.Forms.TabPage();
             this.buttonStopFace = new System.Windows.Forms.Button();
             this.buttonStartFace = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.labelResultFace = new System.Windows.Forms.Label();
+            this.pictureBoxFace = new System.Windows.Forms.PictureBox();
+            this.tabPageMood = new System.Windows.Forms.TabPage();
             this.buttonStopMood = new System.Windows.Forms.Button();
             this.buttonStartMood = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBoxWebCamMood = new System.Windows.Forms.PictureBox();
+            this.labelResultMood = new System.Windows.Forms.Label();
+            this.buttonCapture = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.buttonInsertLogin = new System.Windows.Forms.Button();
             this.tabControlDemos.SuspendLayout();
             this.tabPageLoginFace.SuspendLayout();
-            this.tabPageFaceDetect.SuspendLayout();
-            this.tabPageMood.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDatabaseSec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWebCamSec)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDatabaseSec)).BeginInit();
+            this.tabPageFaceDetect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFace)).BeginInit();
+            this.tabPageMood.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWebCamMood)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,6 +80,8 @@
             // 
             // tabPageLoginFace
             // 
+            this.tabPageLoginFace.Controls.Add(this.buttonInsertLogin);
+            this.tabPageLoginFace.Controls.Add(this.buttonCapture);
             this.tabPageLoginFace.Controls.Add(this.buttonStopSec);
             this.tabPageLoginFace.Controls.Add(this.buttonStartSec);
             this.tabPageLoginFace.Controls.Add(this.lblResultSec);
@@ -94,77 +100,36 @@
             this.tabPageLoginFace.Text = "Validacao de Foto";
             this.tabPageLoginFace.UseVisualStyleBackColor = true;
             // 
-            // tabPageFaceDetect
+            // buttonStopSec
             // 
-            this.tabPageFaceDetect.Controls.Add(this.buttonStopFace);
-            this.tabPageFaceDetect.Controls.Add(this.buttonStartFace);
-            this.tabPageFaceDetect.Controls.Add(this.label5);
-            this.tabPageFaceDetect.Controls.Add(this.labelResultFace);
-            this.tabPageFaceDetect.Controls.Add(this.pictureBoxFace);
-            this.tabPageFaceDetect.Location = new System.Drawing.Point(4, 22);
-            this.tabPageFaceDetect.Name = "tabPageFaceDetect";
-            this.tabPageFaceDetect.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFaceDetect.Size = new System.Drawing.Size(1056, 582);
-            this.tabPageFaceDetect.TabIndex = 1;
-            this.tabPageFaceDetect.Text = "Detecção de Face / Postura";
-            this.tabPageFaceDetect.UseVisualStyleBackColor = true;
+            this.buttonStopSec.Location = new System.Drawing.Point(344, 31);
+            this.buttonStopSec.Name = "buttonStopSec";
+            this.buttonStopSec.Size = new System.Drawing.Size(75, 23);
+            this.buttonStopSec.TabIndex = 9;
+            this.buttonStopSec.Text = "Parar";
+            this.buttonStopSec.UseVisualStyleBackColor = true;
+            this.buttonStopSec.Click += new System.EventHandler(this.buttonStopSec_Click);
             // 
-            // tabPageMood
+            // buttonStartSec
             // 
-            this.tabPageMood.Controls.Add(this.buttonStopMood);
-            this.tabPageMood.Controls.Add(this.buttonStartMood);
-            this.tabPageMood.Controls.Add(this.label6);
-            this.tabPageMood.Controls.Add(this.pictureBoxWebCamMood);
-            this.tabPageMood.Controls.Add(this.labelResultMood);
-            this.tabPageMood.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMood.Name = "tabPageMood";
-            this.tabPageMood.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMood.Size = new System.Drawing.Size(1056, 582);
-            this.tabPageMood.TabIndex = 2;
-            this.tabPageMood.Text = "Validação de Humor";
-            this.tabPageMood.UseVisualStyleBackColor = true;
+            this.buttonStartSec.Location = new System.Drawing.Point(263, 31);
+            this.buttonStartSec.Name = "buttonStartSec";
+            this.buttonStartSec.Size = new System.Drawing.Size(75, 23);
+            this.buttonStartSec.TabIndex = 8;
+            this.buttonStartSec.Text = "Iniciar";
+            this.buttonStartSec.UseVisualStyleBackColor = true;
+            this.buttonStartSec.Click += new System.EventHandler(this.buttonStartSec_Click);
             // 
-            // textBoxUsername
+            // lblResultSec
             // 
-            this.textBoxUsername.Location = new System.Drawing.Point(24, 34);
-            this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(152, 20);
-            this.textBoxUsername.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Usuário";
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.Location = new System.Drawing.Point(182, 32);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 23);
-            this.btnLogin.TabIndex = 2;
-            this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            // 
-            // pictureBoxDatabaseSec
-            // 
-            this.pictureBoxDatabaseSec.Location = new System.Drawing.Point(24, 95);
-            this.pictureBoxDatabaseSec.Name = "pictureBoxDatabaseSec";
-            this.pictureBoxDatabaseSec.Size = new System.Drawing.Size(456, 373);
-            this.pictureBoxDatabaseSec.TabIndex = 3;
-            this.pictureBoxDatabaseSec.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 79);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Imagem Cadastro";
+            this.lblResultSec.BackColor = System.Drawing.Color.Gainsboro;
+            this.lblResultSec.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResultSec.Location = new System.Drawing.Point(24, 481);
+            this.lblResultSec.Name = "lblResultSec";
+            this.lblResultSec.Size = new System.Drawing.Size(1007, 74);
+            this.lblResultSec.TabIndex = 7;
+            this.lblResultSec.Text = "Idle";
+            this.lblResultSec.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
@@ -183,16 +148,93 @@
             this.pictureBoxWebCamSec.TabIndex = 5;
             this.pictureBoxWebCamSec.TabStop = false;
             // 
-            // lblResultSec
+            // label2
             // 
-            this.lblResultSec.BackColor = System.Drawing.Color.Gainsboro;
-            this.lblResultSec.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResultSec.Location = new System.Drawing.Point(24, 481);
-            this.lblResultSec.Name = "lblResultSec";
-            this.lblResultSec.Size = new System.Drawing.Size(1007, 74);
-            this.lblResultSec.TabIndex = 7;
-            this.lblResultSec.Text = "Idle";
-            this.lblResultSec.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(24, 79);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(89, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Imagem Cadastro";
+            // 
+            // pictureBoxDatabaseSec
+            // 
+            this.pictureBoxDatabaseSec.Location = new System.Drawing.Point(24, 95);
+            this.pictureBoxDatabaseSec.Name = "pictureBoxDatabaseSec";
+            this.pictureBoxDatabaseSec.Size = new System.Drawing.Size(456, 373);
+            this.pictureBoxDatabaseSec.TabIndex = 3;
+            this.pictureBoxDatabaseSec.TabStop = false;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Location = new System.Drawing.Point(182, 32);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin.TabIndex = 2;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(24, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Usuário";
+            // 
+            // textBoxUsername
+            // 
+            this.textBoxUsername.Location = new System.Drawing.Point(24, 34);
+            this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.Size = new System.Drawing.Size(152, 20);
+            this.textBoxUsername.TabIndex = 0;
+            // 
+            // tabPageFaceDetect
+            // 
+            this.tabPageFaceDetect.Controls.Add(this.button1);
+            this.tabPageFaceDetect.Controls.Add(this.buttonStopFace);
+            this.tabPageFaceDetect.Controls.Add(this.buttonStartFace);
+            this.tabPageFaceDetect.Controls.Add(this.label5);
+            this.tabPageFaceDetect.Controls.Add(this.labelResultFace);
+            this.tabPageFaceDetect.Controls.Add(this.pictureBoxFace);
+            this.tabPageFaceDetect.Location = new System.Drawing.Point(4, 22);
+            this.tabPageFaceDetect.Name = "tabPageFaceDetect";
+            this.tabPageFaceDetect.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageFaceDetect.Size = new System.Drawing.Size(1056, 582);
+            this.tabPageFaceDetect.TabIndex = 1;
+            this.tabPageFaceDetect.Text = "Detecção de Face / Postura";
+            this.tabPageFaceDetect.UseVisualStyleBackColor = true;
+            // 
+            // buttonStopFace
+            // 
+            this.buttonStopFace.Location = new System.Drawing.Point(489, 37);
+            this.buttonStopFace.Name = "buttonStopFace";
+            this.buttonStopFace.Size = new System.Drawing.Size(75, 23);
+            this.buttonStopFace.TabIndex = 12;
+            this.buttonStopFace.Text = "Parar";
+            this.buttonStopFace.UseVisualStyleBackColor = true;
+            this.buttonStopFace.Click += new System.EventHandler(this.buttonStopFace_Click);
+            // 
+            // buttonStartFace
+            // 
+            this.buttonStartFace.Location = new System.Drawing.Point(408, 37);
+            this.buttonStartFace.Name = "buttonStartFace";
+            this.buttonStartFace.Size = new System.Drawing.Size(75, 23);
+            this.buttonStartFace.TabIndex = 11;
+            this.buttonStartFace.Text = "Iniciar";
+            this.buttonStartFace.UseVisualStyleBackColor = true;
+            this.buttonStartFace.Click += new System.EventHandler(this.buttonStartFace_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(329, 93);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(91, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Imagem WebCam";
             // 
             // labelResultFace
             // 
@@ -213,79 +255,41 @@
             this.pictureBoxFace.TabIndex = 8;
             this.pictureBoxFace.TabStop = false;
             // 
-            // label5
+            // tabPageMood
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(329, 93);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 13);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Imagem WebCam";
-            // 
-            // labelResultMood
-            // 
-            this.labelResultMood.BackColor = System.Drawing.Color.Gainsboro;
-            this.labelResultMood.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelResultMood.Location = new System.Drawing.Point(25, 463);
-            this.labelResultMood.Name = "labelResultMood";
-            this.labelResultMood.Size = new System.Drawing.Size(1007, 74);
-            this.labelResultMood.TabIndex = 12;
-            this.labelResultMood.Text = "Idle";
-            this.labelResultMood.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // buttonStartSec
-            // 
-            this.buttonStartSec.Location = new System.Drawing.Point(263, 31);
-            this.buttonStartSec.Name = "buttonStartSec";
-            this.buttonStartSec.Size = new System.Drawing.Size(75, 23);
-            this.buttonStartSec.TabIndex = 8;
-            this.buttonStartSec.Text = "Iniciar";
-            this.buttonStartSec.UseVisualStyleBackColor = true;
-            // 
-            // buttonStopSec
-            // 
-            this.buttonStopSec.Location = new System.Drawing.Point(344, 31);
-            this.buttonStopSec.Name = "buttonStopSec";
-            this.buttonStopSec.Size = new System.Drawing.Size(75, 23);
-            this.buttonStopSec.TabIndex = 9;
-            this.buttonStopSec.Text = "Parar";
-            this.buttonStopSec.UseVisualStyleBackColor = true;
-            // 
-            // buttonStopFace
-            // 
-            this.buttonStopFace.Location = new System.Drawing.Point(531, 35);
-            this.buttonStopFace.Name = "buttonStopFace";
-            this.buttonStopFace.Size = new System.Drawing.Size(75, 23);
-            this.buttonStopFace.TabIndex = 12;
-            this.buttonStopFace.Text = "Parar";
-            this.buttonStopFace.UseVisualStyleBackColor = true;
-            // 
-            // buttonStartFace
-            // 
-            this.buttonStartFace.Location = new System.Drawing.Point(450, 35);
-            this.buttonStartFace.Name = "buttonStartFace";
-            this.buttonStartFace.Size = new System.Drawing.Size(75, 23);
-            this.buttonStartFace.TabIndex = 11;
-            this.buttonStartFace.Text = "Iniciar";
-            this.buttonStartFace.UseVisualStyleBackColor = true;
+            this.tabPageMood.Controls.Add(this.button2);
+            this.tabPageMood.Controls.Add(this.buttonStopMood);
+            this.tabPageMood.Controls.Add(this.buttonStartMood);
+            this.tabPageMood.Controls.Add(this.label6);
+            this.tabPageMood.Controls.Add(this.pictureBoxWebCamMood);
+            this.tabPageMood.Controls.Add(this.labelResultMood);
+            this.tabPageMood.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMood.Name = "tabPageMood";
+            this.tabPageMood.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMood.Size = new System.Drawing.Size(1056, 582);
+            this.tabPageMood.TabIndex = 2;
+            this.tabPageMood.Text = "Validação de Humor";
+            this.tabPageMood.UseVisualStyleBackColor = true;
             // 
             // buttonStopMood
             // 
-            this.buttonStopMood.Location = new System.Drawing.Point(527, 62);
+            this.buttonStopMood.Location = new System.Drawing.Point(484, 58);
             this.buttonStopMood.Name = "buttonStopMood";
             this.buttonStopMood.Size = new System.Drawing.Size(75, 23);
             this.buttonStopMood.TabIndex = 16;
             this.buttonStopMood.Text = "Parar";
             this.buttonStopMood.UseVisualStyleBackColor = true;
+            this.buttonStopMood.Click += new System.EventHandler(this.buttonStopMood_Click);
             // 
             // buttonStartMood
             // 
-            this.buttonStartMood.Location = new System.Drawing.Point(446, 62);
+            this.buttonStartMood.Location = new System.Drawing.Point(403, 58);
             this.buttonStartMood.Name = "buttonStartMood";
             this.buttonStartMood.Size = new System.Drawing.Size(75, 23);
             this.buttonStartMood.TabIndex = 15;
             this.buttonStartMood.Text = "Iniciar";
             this.buttonStartMood.UseVisualStyleBackColor = true;
+            this.buttonStartMood.Click += new System.EventHandler(this.buttonStartMood_Click);
             // 
             // label6
             // 
@@ -304,6 +308,56 @@
             this.pictureBoxWebCamMood.TabIndex = 13;
             this.pictureBoxWebCamMood.TabStop = false;
             // 
+            // labelResultMood
+            // 
+            this.labelResultMood.BackColor = System.Drawing.Color.Gainsboro;
+            this.labelResultMood.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelResultMood.Location = new System.Drawing.Point(25, 463);
+            this.labelResultMood.Name = "labelResultMood";
+            this.labelResultMood.Size = new System.Drawing.Size(1007, 74);
+            this.labelResultMood.TabIndex = 12;
+            this.labelResultMood.Text = "Idle";
+            this.labelResultMood.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // buttonCapture
+            // 
+            this.buttonCapture.Location = new System.Drawing.Point(425, 32);
+            this.buttonCapture.Name = "buttonCapture";
+            this.buttonCapture.Size = new System.Drawing.Size(75, 23);
+            this.buttonCapture.TabIndex = 10;
+            this.buttonCapture.Text = "Capturar";
+            this.buttonCapture.UseVisualStyleBackColor = true;
+            this.buttonCapture.Click += new System.EventHandler(this.buttonCapture_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(570, 37);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Capturar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(565, 58);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "Capturar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // buttonInsertLogin
+            // 
+            this.buttonInsertLogin.Location = new System.Drawing.Point(928, 31);
+            this.buttonInsertLogin.Name = "buttonInsertLogin";
+            this.buttonInsertLogin.Size = new System.Drawing.Size(103, 23);
+            this.buttonInsertLogin.TabIndex = 11;
+            this.buttonInsertLogin.Text = "Cadastrar Login";
+            this.buttonInsertLogin.UseVisualStyleBackColor = true;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -316,13 +370,13 @@
             this.tabControlDemos.ResumeLayout(false);
             this.tabPageLoginFace.ResumeLayout(false);
             this.tabPageLoginFace.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWebCamSec)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDatabaseSec)).EndInit();
             this.tabPageFaceDetect.ResumeLayout(false);
             this.tabPageFaceDetect.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFace)).EndInit();
             this.tabPageMood.ResumeLayout(false);
             this.tabPageMood.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDatabaseSec)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWebCamSec)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFace)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWebCamMood)).EndInit();
             this.ResumeLayout(false);
 
@@ -354,6 +408,10 @@
         private System.Windows.Forms.Button buttonStartMood;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBoxWebCamMood;
+        private System.Windows.Forms.Button buttonCapture;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonInsertLogin;
     }
 }
 

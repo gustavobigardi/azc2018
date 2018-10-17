@@ -1,11 +1,13 @@
 ﻿using Callcenter.Domain.Commands.UserCommands.Inputs;
 using Callcenter.Domain.Handlers;
 using Callcenter.Domain.Repositories;
+using Callcenter.Infra.Webcam;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,10 +20,13 @@ namespace Callcenter.Presentation
         private readonly UserHandler _userHandler;
         private readonly IUserRepository _userRepository;
 
+        private WebCamCapture webCam;
+
         public FormMain(UserHandler userHandler, IUserRepository userRepository)
         {
             _userHandler = userHandler;
             _userRepository = userRepository;
+            webCam = new WebCamCapture(this);
             InitializeComponent();
         }
 
@@ -47,7 +52,76 @@ namespace Callcenter.Presentation
             }
 
             var users = _userRepository.ListAll();
-            MessageBox.Show(users.Count().ToString());
+        }
+
+        private void buttonStartSec_Click(object sender, EventArgs e)
+        {
+            webCam.Start();
+        }
+
+        private void buttonStopSec_Click(object sender, EventArgs e)
+        {
+            webCam.Stop();
+        }
+
+        private void buttonCapture_Click(object sender, EventArgs e)
+        {
+            pictureBoxWebCamSec.Image = webCam.CaptureFrame();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            var user = _userRepository.GetByLogin(textBoxUsername.Text);
+
+            if (user != null && !String.IsNullOrWhiteSpace(user.Picture))
+            {
+                Byte[] bitmapData = Convert.FromBase64String(FixBase64ForImage(user.Picture));
+                MemoryStream streamBitmap = new MemoryStream(bitmapData);
+                pictureBoxDatabaseSec.Image = new Bitmap((Bitmap)Image.FromStream(streamBitmap));
+            } else if (user == null)
+            {
+                MessageBox.Show("Usuário não encontrado");
+            } else if (user != null && String.IsNullOrWhiteSpace(user.Picture))
+            {
+                MessageBox.Show("Usuário sem foto");
+            }
+        }
+
+        private string FixBase64ForImage(string Image)
+        {
+            System.Text.StringBuilder sbText = new System.Text.StringBuilder(Image, Image.Length);
+            sbText.Replace("\r\n", String.Empty); sbText.Replace(" ", String.Empty);
+            return sbText.ToString();
+        }
+
+        private void buttonStartFace_Click(object sender, EventArgs e)
+        {
+            webCam.Start();
+        }
+
+        private void buttonStopFace_Click(object sender, EventArgs e)
+        {
+            webCam.Stop();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pictureBoxFace.Image = webCam.CaptureFrame();
+        }
+
+        private void buttonStartMood_Click(object sender, EventArgs e)
+        {
+            webCam.Start();
+        }
+
+        private void buttonStopMood_Click(object sender, EventArgs e)
+        {
+            webCam.Stop();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            pictureBoxWebCamMood.Image = webCam.CaptureFrame();
         }
     }
 }

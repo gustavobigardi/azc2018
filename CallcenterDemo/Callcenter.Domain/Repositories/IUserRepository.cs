@@ -15,5 +15,6 @@ namespace Callcenter.Domain.Repositories
         void Save(User user);
         IEnumerable<ListUserQueryResult> ListAll();
         GetUserQueryResult Get(Guid id);
+        GetUserQueryResult GetByLogin(string login);
     }
 }

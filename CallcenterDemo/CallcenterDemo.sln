@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Infra", "2 - Infra", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Database", "3 - Database", "{08B42200-5438-4284-B745-50494072585B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Callcenter.Infra.Webcam", "Callcenter.Infra.Webcam\Callcenter.Infra.Webcam.csproj", "{D4ADA1B6-8B44-4E48-B281-D488C7283EA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{85F5DAFA-D45D-4792-BA8B-456AE8F9BB3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85F5DAFA-D45D-4792-BA8B-456AE8F9BB3F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{85F5DAFA-D45D-4792-BA8B-456AE8F9BB3F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D4ADA1B6-8B44-4E48-B281-D488C7283EA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4ADA1B6-8B44-4E48-B281-D488C7283EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4ADA1B6-8B44-4E48-B281-D488C7283EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4ADA1B6-8B44-4E48-B281-D488C7283EA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 		{3C4A8963-86DC-4CE2-B4B4-933B3F887A54} = {124A3C21-28F1-4FCA-A947-8B5DC37B3FF4}
 		{E7A961B7-AABC-446B-A6EF-E4FE61E48F3C} = {DE31AB77-842A-486D-A7A7-A23F51DD5717}
 		{85F5DAFA-D45D-4792-BA8B-456AE8F9BB3F} = {08B42200-5438-4284-B745-50494072585B}
+		{D4ADA1B6-8B44-4E48-B281-D488C7283EA8} = {124A3C21-28F1-4FCA-A947-8B5DC37B3FF4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {940B0E55-9803-4981-8A94-FD5D843079F9}
