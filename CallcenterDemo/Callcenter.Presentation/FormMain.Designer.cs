@@ -56,6 +56,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.buttonInsertLogin = new System.Windows.Forms.Button();
+            this.buttonCompare = new System.Windows.Forms.Button();
             this.tabControlDemos.SuspendLayout();
             this.tabPageLoginFace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWebCamSec)).BeginInit();
@@ -80,6 +81,7 @@
             // 
             // tabPageLoginFace
             // 
+            this.tabPageLoginFace.Controls.Add(this.buttonCompare);
             this.tabPageLoginFace.Controls.Add(this.buttonInsertLogin);
             this.tabPageLoginFace.Controls.Add(this.buttonCapture);
             this.tabPageLoginFace.Controls.Add(this.buttonStopSec);
@@ -321,7 +323,7 @@
             // 
             // buttonCapture
             // 
-            this.buttonCapture.Location = new System.Drawing.Point(425, 32);
+            this.buttonCapture.Location = new System.Drawing.Point(425, 31);
             this.buttonCapture.Name = "buttonCapture";
             this.buttonCapture.Size = new System.Drawing.Size(75, 23);
             this.buttonCapture.TabIndex = 10;
@@ -357,6 +359,16 @@
             this.buttonInsertLogin.TabIndex = 11;
             this.buttonInsertLogin.Text = "Cadastrar Login";
             this.buttonInsertLogin.UseVisualStyleBackColor = true;
+            // 
+            // buttonCompare
+            // 
+            this.buttonCompare.Location = new System.Drawing.Point(506, 30);
+            this.buttonCompare.Name = "buttonCompare";
+            this.buttonCompare.Size = new System.Drawing.Size(75, 23);
+            this.buttonCompare.TabIndex = 12;
+            this.buttonCompare.Text = "Comparar";
+            this.buttonCompare.UseVisualStyleBackColor = true;
+            this.buttonCompare.Click += new System.EventHandler(this.buttonCompare_Click);
             // 
             // FormMain
             // 
@@ -412,6 +424,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonInsertLogin;
+        private System.Windows.Forms.Button buttonCompare;
     }
 }
 

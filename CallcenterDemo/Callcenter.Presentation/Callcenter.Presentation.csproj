@@ -148,6 +148,10 @@
       <Project>{3c4a8963-86dc-4ce2-b4b4-933b3f887a54}</Project>
       <Name>Callcenter.Infra.Database</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Callcenter.Infra.FaceAPI\Callcenter.Infra.FaceAPI.csproj">
+      <Project>{14cea505-26f7-408a-8db0-904da7a3b52f}</Project>
+      <Name>Callcenter.Infra.FaceAPI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Callcenter.Infra.Webcam\Callcenter.Infra.Webcam.csproj">
       <Project>{d4ada1b6-8b44-4e48-b281-d488c7283ea8}</Project>
       <Name>Callcenter.Infra.Webcam</Name>

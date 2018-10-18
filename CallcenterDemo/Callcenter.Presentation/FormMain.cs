@@ -1,12 +1,14 @@
 ﻿using Callcenter.Domain.Commands.UserCommands.Inputs;
 using Callcenter.Domain.Handlers;
 using Callcenter.Domain.Repositories;
+using Callcenter.Infra.FaceAPI;
 using Callcenter.Infra.Webcam;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -78,10 +80,12 @@ namespace Callcenter.Presentation
                 Byte[] bitmapData = Convert.FromBase64String(FixBase64ForImage(user.Picture));
                 MemoryStream streamBitmap = new MemoryStream(bitmapData);
                 pictureBoxDatabaseSec.Image = new Bitmap((Bitmap)Image.FromStream(streamBitmap));
-            } else if (user == null)
+            }
+            else if (user == null)
             {
                 MessageBox.Show("Usuário não encontrado");
-            } else if (user != null && String.IsNullOrWhiteSpace(user.Picture))
+            }
+            else if (user != null && String.IsNullOrWhiteSpace(user.Picture))
             {
                 MessageBox.Show("Usuário sem foto");
             }
@@ -122,6 +126,25 @@ namespace Callcenter.Presentation
         private void button2_Click(object sender, EventArgs e)
         {
             pictureBoxWebCamMood.Image = webCam.CaptureFrame();
+        }
+
+        private void buttonCompare_Click(object sender, EventArgs e)
+        {
+            Stream originalStream = new MemoryStream();
+            Stream detectStream = new MemoryStream();
+
+            var key = "7a5e207339844c938add1aad8fe17f8a";
+
+            var faceApi = new FaceApi(key);
+
+            pictureBoxDatabaseSec.Image.Save(originalStream, ImageFormat.Jpeg);
+            pictureBoxWebCamSec.Image.Save(detectStream, ImageFormat.Jpeg);
+
+            var result = faceApi.Compare(originalStream, detectStream).GetAwaiter().GetResult();
+
+            lblResultSec.Text = result ? "Confere" : "Não confere";
+            lblResultSec.BackColor = result ? Color.Green : Color.Red;
+            lblResultSec.ForeColor = Color.White;
         }
     }
 }
