@@ -8,6 +8,6 @@ namespace Callcenter.Shared
 {
     public static class Settings
     {
-        public static string ConnectionString = @"data source=(localdb)\mssqllocaldb;Initial Catalog=demo_callcenter;Integrated Security=true; Connection Timeout=900";
+        public static string ConnectionString = @"data source=(local);Initial Catalog=demo_callcenter;Integrated Security=true; Connection Timeout=900";
     }
 }

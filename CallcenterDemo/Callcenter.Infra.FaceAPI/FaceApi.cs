@@ -1,4 +1,5 @@
 ﻿using Microsoft.ProjectOxford.Face;
+using Microsoft.ProjectOxford.Face.Contract;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,6 +11,8 @@ namespace Callcenter.Infra.FaceAPI
 {
     public class FaceApi
     {
+        private static readonly FaceAttributeType[] faceAttributes = { FaceAttributeType.Emotion };
+
         private readonly IFaceServiceClient _faceserviceclient;
 
         public FaceApi(string apiKey)
@@ -17,7 +20,7 @@ namespace Callcenter.Infra.FaceAPI
             _faceserviceclient = new FaceServiceClient(apiKey, "https://brazilsouth.api.cognitive.microsoft.com/face/v1.0");
         }
 
-        public async Task<bool> Compare(Stream image1, Stream image2)
+        public async Task<VerifyResult> Compare(Stream image1, Stream image2)
         {
             Guid faceid1;
             Guid faceid2;
@@ -34,9 +37,27 @@ namespace Callcenter.Infra.FaceAPI
             else
                 throw new Exception("No face found in image 2.");
 
-            var result = await _faceserviceclient.VerifyAsync(faceid1, faceid2);
+            return await _faceserviceclient.VerifyAsync(faceid1, faceid2);
+        }
 
-            return result.IsIdentical;
+        public async Task<bool> DetectFace(Stream stream)
+        {
+            var faces = await _faceserviceclient.DetectAsync(stream, returnFaceId: true);
+            return faces.Length == 1;
+        }
+
+        public async Task<Face> DetectMood(Stream stream)
+        {
+            Guid faceid1;
+
+            var faces = await _faceserviceclient.DetectAsync(stream, returnFaceId: true, returnFaceAttributes: faceAttributes);
+
+            if (faces.Length > 0)
+                faceid1 = faces[0].FaceId;
+            else
+                throw new Exception("No face found in image 1.");
+
+            return faces[0];
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,6 +22,7 @@ namespace Callcenter.Presentation
     {
         private readonly UserHandler _userHandler;
         private readonly IUserRepository _userRepository;
+        private readonly string key = "";
 
         private WebCamCapture webCam;
 
@@ -128,19 +130,22 @@ namespace Callcenter.Presentation
             pictureBoxWebCamMood.Image = webCam.CaptureFrame();
         }
 
-        private void buttonCompare_Click(object sender, EventArgs e)
+        private async void buttonCompare_Click(object sender, EventArgs e)
         {
             Stream originalStream = new MemoryStream();
             Stream detectStream = new MemoryStream();
-
-            var key = "7a5e207339844c938add1aad8fe17f8a";
 
             var faceApi = new FaceApi(key);
 
             pictureBoxDatabaseSec.Image.Save(originalStream, ImageFormat.Jpeg);
             pictureBoxWebCamSec.Image.Save(detectStream, ImageFormat.Jpeg);
 
-            var result = faceApi.Compare(originalStream, detectStream).GetAwaiter().GetResult();
+            originalStream.Seek(0, SeekOrigin.Begin);
+            detectStream.Seek(0, SeekOrigin.Begin);
+
+            var verifyResult = await faceApi.Compare(originalStream, detectStream);
+
+            var result = verifyResult.IsIdentical;
 
             lblResultSec.Text = result ? "Confere" : "Não confere";
             lblResultSec.BackColor = result ? Color.Green : Color.Red;
@@ -181,6 +186,40 @@ namespace Callcenter.Presentation
                 var file = openFileDialogImage.FileName;
                 pictureBoxWebCamMood.Image = Image.FromFile(file);
             }
+        }
+
+        private async void buttonDetect_Click(object sender, EventArgs e)
+        {
+            Stream stream = new MemoryStream();
+
+            var faceApi = new FaceApi(key);
+
+            pictureBoxFace.Image.Save(stream, ImageFormat.Jpeg);
+
+            stream.Seek(0, SeekOrigin.Begin);
+
+            var result = await faceApi.DetectFace(stream);
+
+            labelResultFace.Text = result ? "Postura OK, apenas 1 face" : "Postura incorreta ou mais de uma face";
+            labelResultFace.BackColor = result ? Color.Green : Color.Red;
+            labelResultFace.ForeColor = Color.White;
+        }
+
+        private async void buttonDetectMood_Click(object sender, EventArgs e)
+        {
+            Stream stream = new MemoryStream();
+
+            var faceApi = new FaceApi(key);
+
+            pictureBoxWebCamMood.Image.Save(stream, ImageFormat.Jpeg);
+
+            stream.Seek(0, SeekOrigin.Begin);
+
+            var result = await faceApi.DetectMood(stream);
+
+            var mood = result.FaceAttributes.Emotion.ToRankedList().First();
+
+            labelResultMood.Text = "Humor: " + mood.Key;
         }
     }
 }

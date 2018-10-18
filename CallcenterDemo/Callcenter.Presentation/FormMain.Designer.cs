@@ -30,6 +30,8 @@
         {
             this.tabControlDemos = new System.Windows.Forms.TabControl();
             this.tabPageLoginFace = new System.Windows.Forms.TabPage();
+            this.buttonLoadWebCam = new System.Windows.Forms.Button();
+            this.buttonLoadSecCad = new System.Windows.Forms.Button();
             this.buttonCompare = new System.Windows.Forms.Button();
             this.buttonInsertLogin = new System.Windows.Forms.Button();
             this.buttonCapture = new System.Windows.Forms.Button();
@@ -44,6 +46,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.tabPageFaceDetect = new System.Windows.Forms.TabPage();
+            this.buttonLoadFace = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonStopFace = new System.Windows.Forms.Button();
             this.buttonStartFace = new System.Windows.Forms.Button();
@@ -51,17 +54,16 @@
             this.labelResultFace = new System.Windows.Forms.Label();
             this.pictureBoxFace = new System.Windows.Forms.PictureBox();
             this.tabPageMood = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.buttonStopMood = new System.Windows.Forms.Button();
             this.buttonStartMood = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBoxWebCamMood = new System.Windows.Forms.PictureBox();
             this.labelResultMood = new System.Windows.Forms.Label();
-            this.buttonLoadSecCad = new System.Windows.Forms.Button();
-            this.buttonLoadWebCam = new System.Windows.Forms.Button();
             this.openFileDialogImage = new System.Windows.Forms.OpenFileDialog();
-            this.buttonLoadFace = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonDetect = new System.Windows.Forms.Button();
+            this.buttonDetectMood = new System.Windows.Forms.Button();
             this.tabControlDemos.SuspendLayout();
             this.tabPageLoginFace.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWebCamSec)).BeginInit();
@@ -108,6 +110,26 @@
             this.tabPageLoginFace.TabIndex = 0;
             this.tabPageLoginFace.Text = "Validacao de Foto";
             this.tabPageLoginFace.UseVisualStyleBackColor = true;
+            // 
+            // buttonLoadWebCam
+            // 
+            this.buttonLoadWebCam.Location = new System.Drawing.Point(956, 439);
+            this.buttonLoadWebCam.Name = "buttonLoadWebCam";
+            this.buttonLoadWebCam.Size = new System.Drawing.Size(75, 23);
+            this.buttonLoadWebCam.TabIndex = 14;
+            this.buttonLoadWebCam.Text = "Carregar";
+            this.buttonLoadWebCam.UseVisualStyleBackColor = true;
+            this.buttonLoadWebCam.Click += new System.EventHandler(this.buttonLoadWebCam_Click);
+            // 
+            // buttonLoadSecCad
+            // 
+            this.buttonLoadSecCad.Location = new System.Drawing.Point(405, 439);
+            this.buttonLoadSecCad.Name = "buttonLoadSecCad";
+            this.buttonLoadSecCad.Size = new System.Drawing.Size(75, 23);
+            this.buttonLoadSecCad.TabIndex = 13;
+            this.buttonLoadSecCad.Text = "Carregar";
+            this.buttonLoadSecCad.UseVisualStyleBackColor = true;
+            this.buttonLoadSecCad.Click += new System.EventHandler(this.buttonLoadSecCad_Click);
             // 
             // buttonCompare
             // 
@@ -184,7 +206,7 @@
             this.pictureBoxWebCamSec.Location = new System.Drawing.Point(575, 95);
             this.pictureBoxWebCamSec.Name = "pictureBoxWebCamSec";
             this.pictureBoxWebCamSec.Size = new System.Drawing.Size(456, 338);
-            this.pictureBoxWebCamSec.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxWebCamSec.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxWebCamSec.TabIndex = 5;
             this.pictureBoxWebCamSec.TabStop = false;
             // 
@@ -203,7 +225,7 @@
             this.pictureBoxDatabaseSec.Location = new System.Drawing.Point(24, 95);
             this.pictureBoxDatabaseSec.Name = "pictureBoxDatabaseSec";
             this.pictureBoxDatabaseSec.Size = new System.Drawing.Size(456, 338);
-            this.pictureBoxDatabaseSec.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxDatabaseSec.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxDatabaseSec.TabIndex = 3;
             this.pictureBoxDatabaseSec.TabStop = false;
             // 
@@ -235,6 +257,7 @@
             // 
             // tabPageFaceDetect
             // 
+            this.tabPageFaceDetect.Controls.Add(this.buttonDetect);
             this.tabPageFaceDetect.Controls.Add(this.buttonLoadFace);
             this.tabPageFaceDetect.Controls.Add(this.button1);
             this.tabPageFaceDetect.Controls.Add(this.buttonStopFace);
@@ -249,6 +272,16 @@
             this.tabPageFaceDetect.TabIndex = 1;
             this.tabPageFaceDetect.Text = "Detecção de Face / Postura";
             this.tabPageFaceDetect.UseVisualStyleBackColor = true;
+            // 
+            // buttonLoadFace
+            // 
+            this.buttonLoadFace.Location = new System.Drawing.Point(644, 397);
+            this.buttonLoadFace.Name = "buttonLoadFace";
+            this.buttonLoadFace.Size = new System.Drawing.Size(75, 23);
+            this.buttonLoadFace.TabIndex = 14;
+            this.buttonLoadFace.Text = "Carregar";
+            this.buttonLoadFace.UseVisualStyleBackColor = true;
+            this.buttonLoadFace.Click += new System.EventHandler(this.buttonLoadFace_Click);
             // 
             // button1
             // 
@@ -312,6 +345,7 @@
             // 
             // tabPageMood
             // 
+            this.tabPageMood.Controls.Add(this.buttonDetectMood);
             this.tabPageMood.Controls.Add(this.button3);
             this.tabPageMood.Controls.Add(this.button2);
             this.tabPageMood.Controls.Add(this.buttonStopMood);
@@ -326,6 +360,16 @@
             this.tabPageMood.TabIndex = 2;
             this.tabPageMood.Text = "Validação de Humor";
             this.tabPageMood.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(640, 428);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 18;
+            this.button3.Text = "Carregar";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -387,45 +431,25 @@
             this.labelResultMood.Text = "Idle";
             this.labelResultMood.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // buttonLoadSecCad
+            // buttonDetect
             // 
-            this.buttonLoadSecCad.Location = new System.Drawing.Point(405, 439);
-            this.buttonLoadSecCad.Name = "buttonLoadSecCad";
-            this.buttonLoadSecCad.Size = new System.Drawing.Size(75, 23);
-            this.buttonLoadSecCad.TabIndex = 13;
-            this.buttonLoadSecCad.Text = "Carregar";
-            this.buttonLoadSecCad.UseVisualStyleBackColor = true;
-            this.buttonLoadSecCad.Click += new System.EventHandler(this.buttonLoadSecCad_Click);
+            this.buttonDetect.Location = new System.Drawing.Point(651, 37);
+            this.buttonDetect.Name = "buttonDetect";
+            this.buttonDetect.Size = new System.Drawing.Size(75, 23);
+            this.buttonDetect.TabIndex = 15;
+            this.buttonDetect.Text = "Detectar";
+            this.buttonDetect.UseVisualStyleBackColor = true;
+            this.buttonDetect.Click += new System.EventHandler(this.buttonDetect_Click);
             // 
-            // buttonLoadWebCam
+            // buttonDetectMood
             // 
-            this.buttonLoadWebCam.Location = new System.Drawing.Point(956, 439);
-            this.buttonLoadWebCam.Name = "buttonLoadWebCam";
-            this.buttonLoadWebCam.Size = new System.Drawing.Size(75, 23);
-            this.buttonLoadWebCam.TabIndex = 14;
-            this.buttonLoadWebCam.Text = "Carregar";
-            this.buttonLoadWebCam.UseVisualStyleBackColor = true;
-            this.buttonLoadWebCam.Click += new System.EventHandler(this.buttonLoadWebCam_Click);
-            // 
-            // buttonLoadFace
-            // 
-            this.buttonLoadFace.Location = new System.Drawing.Point(644, 397);
-            this.buttonLoadFace.Name = "buttonLoadFace";
-            this.buttonLoadFace.Size = new System.Drawing.Size(75, 23);
-            this.buttonLoadFace.TabIndex = 14;
-            this.buttonLoadFace.Text = "Carregar";
-            this.buttonLoadFace.UseVisualStyleBackColor = true;
-            this.buttonLoadFace.Click += new System.EventHandler(this.buttonLoadFace_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(640, 428);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 18;
-            this.button3.Text = "Carregar";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonDetectMood.Location = new System.Drawing.Point(646, 58);
+            this.buttonDetectMood.Name = "buttonDetectMood";
+            this.buttonDetectMood.Size = new System.Drawing.Size(75, 23);
+            this.buttonDetectMood.TabIndex = 19;
+            this.buttonDetectMood.Text = "Detectar";
+            this.buttonDetectMood.UseVisualStyleBackColor = true;
+            this.buttonDetectMood.Click += new System.EventHandler(this.buttonDetectMood_Click);
             // 
             // FormMain
             // 
@@ -487,6 +511,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialogImage;
         private System.Windows.Forms.Button buttonLoadFace;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonDetect;
+        private System.Windows.Forms.Button buttonDetectMood;
     }
 }
 
