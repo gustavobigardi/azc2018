@@ -146,5 +146,41 @@ namespace Callcenter.Presentation
             lblResultSec.BackColor = result ? Color.Green : Color.Red;
             lblResultSec.ForeColor = Color.White;
         }
+
+        private void buttonLoadSecCad_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.OK == openFileDialogImage.ShowDialog())
+            {
+                var file = openFileDialogImage.FileName;
+                pictureBoxDatabaseSec.Image = Image.FromFile(file);
+            }
+        }
+
+        private void buttonLoadWebCam_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.OK == openFileDialogImage.ShowDialog())
+            {
+                var file = openFileDialogImage.FileName;
+                pictureBoxWebCamSec.Image = Image.FromFile(file);
+            }
+        }
+
+        private void buttonLoadFace_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.OK == openFileDialogImage.ShowDialog())
+            {
+                var file = openFileDialogImage.FileName;
+                pictureBoxFace.Image = Image.FromFile(file);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.OK == openFileDialogImage.ShowDialog())
+            {
+                var file = openFileDialogImage.FileName;
+                pictureBoxWebCamMood.Image = Image.FromFile(file);
+            }
+        }
     }
 }
