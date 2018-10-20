@@ -40,10 +40,10 @@ namespace Callcenter.Infra.FaceAPI
             return await _faceserviceclient.VerifyAsync(faceid1, faceid2);
         }
 
-        public async Task<bool> DetectFace(Stream stream)
+        public async Task<int> DetectFace(Stream stream)
         {
             var faces = await _faceserviceclient.DetectAsync(stream, returnFaceId: true);
-            return faces.Length == 1;
+            return faces.Length;
         }
 
         public async Task<Face> DetectMood(Stream stream)

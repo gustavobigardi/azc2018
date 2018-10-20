@@ -22,7 +22,7 @@ namespace Callcenter.Presentation
     {
         private readonly UserHandler _userHandler;
         private readonly IUserRepository _userRepository;
-        private readonly string key = "";
+        private readonly string key = "d907247b3eb247b2a8f19d0aaa4b134c";
 
         private WebCamCapture webCam;
 
@@ -73,25 +73,6 @@ namespace Callcenter.Presentation
             pictureBoxWebCamSec.Image = webCam.CaptureFrame();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            var user = _userRepository.GetByLogin(textBoxUsername.Text);
-
-            if (user != null && !String.IsNullOrWhiteSpace(user.Picture))
-            {
-                Byte[] bitmapData = Convert.FromBase64String(FixBase64ForImage(user.Picture));
-                MemoryStream streamBitmap = new MemoryStream(bitmapData);
-                pictureBoxDatabaseSec.Image = new Bitmap((Bitmap)Image.FromStream(streamBitmap));
-            }
-            else if (user == null)
-            {
-                MessageBox.Show("Usuário não encontrado");
-            }
-            else if (user != null && String.IsNullOrWhiteSpace(user.Picture))
-            {
-                MessageBox.Show("Usuário sem foto");
-            }
-        }
 
         private string FixBase64ForImage(string Image)
         {
@@ -200,8 +181,8 @@ namespace Callcenter.Presentation
 
             var result = await faceApi.DetectFace(stream);
 
-            labelResultFace.Text = result ? "Postura OK, apenas 1 face" : "Postura incorreta ou mais de uma face";
-            labelResultFace.BackColor = result ? Color.Green : Color.Red;
+            labelResultFace.Text = result == 1 ? "Postura OK, apenas 1 face" : "Postura incorreta ou mais de uma face (" + result.ToString() + ")";
+            labelResultFace.BackColor = result == 1 ? Color.Green : Color.Red;
             labelResultFace.ForeColor = Color.White;
         }
 
