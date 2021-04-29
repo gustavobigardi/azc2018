@@ -1,0 +1,27 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/CallcenterDemo"
+  schedule:
+    interval: daily
+    time: "07:00"
+    timezone: America/Sao_Paulo
+  open-pull-requests-limit: 99
+  target-branch: master
+  ignore:
+  - dependency-name: Flunt
+    versions:
+    - 1.0.5
+    - 2.0.0
+    - 2.0.1
+    - 2.0.2
+  - dependency-name: Microsoft.NETCore.Platforms
+    versions:
+    - 5.0.0
+    - 5.0.1
+  - dependency-name: SimpleInjector
+    versions:
+    - 5.2.1
+  - dependency-name: Newtonsoft.Json
+    versions:
+    - 12.0.3
